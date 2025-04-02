@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneaky Joker</title>
+</head>
+<body>
+    <div class="floating-symbols"></div>
+    <div class="container">
+        <h1>Welcome to The Sneaky Joker!</h1>
+        <button class="start-btn">Start Game</button>
+    </div>
+    <script>
+        const symbols = ['♠', '♥', '♣', '♦'];
+        const floatingContainer = document.querySelector('.floating-symbols');
+        
+        for (let i = 0; i < 15; i++) {
+            let symbol = document.createElement('div');
+            symbol.classList.add('symbol');
+            symbol.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+            symbol.style.left = Math.random() * 100 + 'vw';
+            symbol.style.top = Math.random() * 100 + 'vh';
+            symbol.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            floatingContainer.appendChild(symbol);
+        }
+
+        // Add click event handler for the Start Game button
+        document.querySelector('.start-btn').addEventListener('click', () => {
+            window.location.href = 'http://localhost:5000/lobby';
+        });
+    </script>
+</body>
+</html>

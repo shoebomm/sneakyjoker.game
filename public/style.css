@@ -1,0 +1,690 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e1e2e, #3a3a5a);
+    color: #ffffff;
+    overflow: hidden;
+    line-height: 1.6;
+}
+
+/* Background with floating symbols */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+    backdrop-filter: blur(100px);
+}
+
+.grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.5;
+}
+
+.floating-symbols {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.symbol {
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.05;
+    filter: blur(1px);
+    animation: float 20s infinite ease-in-out;
+}
+
+.spade { color: #ffffff; }
+.heart { color: #ff3b30; }
+.club { color: #ffffff; }
+.diamond { color: #ff3b30; }
+
+.symbol:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+.symbol:nth-child(2) { top: 65%; left: 85%; animation-delay: -5s; }
+.symbol:nth-child(3) { top: 35%; left: 45%; animation-delay: -10s; }
+.symbol:nth-child(4) { top: 85%; left: 25%; animation-delay: -7s; }
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg) scale(1); }
+    50% { transform: translateY(-30px) rotate(180deg) scale(1.1); }
+    100% { transform: translateY(0) rotate(360deg) scale(1); }
+}
+
+/* Container Styles */
+.container {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 3rem;
+    background: rgba(45, 0, 75, 0.3);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    animation: containerFadeIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 1px solid rgba(147, 51, 234, 0.2);
+}
+
+/* Input and Button Groups */
+.input-group, .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.input-group {
+    animation: fadeIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s forwards;
+}
+
+.button-group {
+    animation: fadeIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s forwards;
+}
+
+/* Input Styles */
+input[type="text"] {
+    width: 100%;
+    padding: 1.2rem;
+    border: 2px solid rgba(147, 51, 234, 0.2);
+    border-radius: 15px;
+    background: rgba(45, 0, 75, 0.2);
+    color: #ffffff;
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #9333ea;
+    background: rgba(45, 0, 75, 0.3);
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.2);
+}
+
+input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Button Styles */
+button {
+    padding: 1.2rem 2.5rem;
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, #9333ea, #7e22ce);
+    border: none;
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    width: 100%;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(147, 51, 234, 0.3);
+    background: linear-gradient(135deg, #a855f7, #9333ea);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(147, 51, 234, 0.2);
+}
+
+/* Animations */
+@keyframes containerFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -55%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes titleSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    animation: titleSlideDown 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
+}
+
+/* Message Styles */
+.message {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: none;
+}
+
+.message.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Room Info Styles */
+.room-info {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(147, 51, 234, 0.1);
+    border: 1px solid rgba(147, 51, 234, 0.2);
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: #ffffff;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.room-info.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        max-width: 400px;
+        padding: 2rem;
+    }
+
+    .input-group, .button-group {
+        gap: 0.8rem;
+    }
+
+    input[type="text"], button {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    input[type="text"], button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Game Room Styles */
+.game-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: clamp(0.5rem, 1.5vw, 1.5rem);
+    gap: clamp(0.5rem, 1.5vw, 1.5rem);
+    max-width: min(1400px, 95vw);
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Player Seats */
+.player-seats {
+    display: flex;
+    justify-content: space-between;
+    padding: clamp(0.5rem, 1vw, 1rem);
+    gap: clamp(1rem, 2vw, 2rem);
+    margin-bottom: clamp(0.3rem, 0.8vw, 0.8rem);
+    height: clamp(100px, 12vh, 120px);
+}
+
+.player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(0.3rem, 0.5vw, 0.5rem);
+    padding: clamp(0.5rem, 0.8vw, 0.8rem);
+    border-radius: clamp(10px, 1.5vw, 15px);
+    background: rgba(147, 51, 234, 0.05);
+    transition: all 0.3s ease;
+    min-width: clamp(100px, 12vw, 120px);
+    height: 100%;
+}
+
+.player.active {
+    background: rgba(147, 51, 234, 0.1);
+    box-shadow: 0 0 30px rgba(147, 51, 234, 0.2);
+}
+
+.avatar {
+    width: clamp(50px, 6vh, 70px);
+    height: clamp(50px, 6vh, 70px);
+    border-radius: 50%;
+    background: rgba(147, 51, 234, 0.2);
+    border: clamp(2px, 0.3vw, 3px) solid rgba(147, 51, 234, 0.4);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.player.active .avatar {
+    border-color: #9333ea;
+    box-shadow: 0 0 25px rgba(147, 51, 234, 0.4);
+    transform: scale(1.05);
+}
+
+.username {
+    font-size: clamp(0.8rem, 1vw, 1rem);
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+}
+
+.turn-indicator {
+    width: clamp(10px, 1.2vw, 14px);
+    height: clamp(10px, 1.2vw, 14px);
+    border-radius: 50%;
+    background: rgba(147, 51, 234, 0.2);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(147, 51, 234, 0.3);
+}
+
+.player.active .turn-indicator {
+    background: #9333ea;
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.6);
+    transform: scale(1.2);
+}
+
+/* Game Area */
+.game-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1rem, 2vw, 2rem);
+    padding: clamp(1rem, 2vw, 2rem);
+    background: rgba(147, 51, 234, 0.05);
+    border-radius: clamp(15px, 2vw, 20px);
+    border: 1px solid rgba(147, 51, 234, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: min(800px, 95vw);
+    margin: 0 auto;
+    height: clamp(300px, 40vh, 400px);
+}
+
+.played-cards {
+    width: 100%;
+    height: clamp(150px, 25vh, 200px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(147, 51, 234, 0.1);
+    border-radius: clamp(10px, 1.5vw, 15px);
+    border: 2px solid rgba(147, 51, 234, 0.3);
+    box-shadow: inset 0 0 20px rgba(147, 51, 234, 0.1);
+}
+
+.card-stack {
+    width: clamp(80px, 12vw, 100px);
+    height: clamp(120px, 18vw, 150px);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: clamp(8px, 1vw, 10px);
+    border: 2px solid rgba(147, 51, 234, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.card-stack:hover {
+    transform: translateY(-5px);
+}
+
+.timer-container {
+    width: clamp(60px, 8vh, 80px);
+    height: clamp(60px, 8vh, 80px);
+    border-radius: 50%;
+    background: rgba(147, 51, 234, 0.15);
+    border: 2px solid rgba(147, 51, 234, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 30px rgba(147, 51, 234, 0.2);
+}
+
+.timer {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Player's Hand */
+.player-hand {
+    padding: clamp(0.8rem, 1.2vw, 1.2rem);
+    background: rgba(147, 51, 234, 0.1);
+    border-radius: clamp(10px, 1.5vw, 15px);
+    border: 2px solid rgba(147, 51, 234, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: min(900px, 95vw);
+    margin: 0 auto;
+    height: clamp(180px, 25vh, 220px);
+}
+
+.hand-container {
+    display: flex;
+    justify-content: center;
+    gap: clamp(0.8rem, 1.2vw, 1.2rem);
+    padding: clamp(0.5rem, 0.8vw, 0.8rem);
+    flex-wrap: wrap;
+    height: 100%;
+    align-items: center;
+}
+
+.card {
+    width: clamp(70px, 10vw, 90px);
+    height: clamp(105px, 15vw, 135px);
+    perspective: 1000px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.card:hover {
+    transform: translateY(-15px);
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+    font-weight: 700;
+    border-radius: clamp(8px, 1vw, 10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(147, 51, 234, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.card-front {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, #9333ea, #7e22ce);
+}
+
+.card.selected .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card.selected {
+    transform: translateY(-20px);
+    box-shadow: 0 15px 30px rgba(147, 51, 234, 0.3);
+}
+
+/* Game Controls */
+.game-controls {
+    display: flex;
+    justify-content: center;
+    gap: clamp(0.8rem, 1.2vw, 1.2rem);
+    padding: clamp(0.8rem, 1.2vw, 1.2rem);
+    background: rgba(147, 51, 234, 0.05);
+    border-radius: clamp(10px, 1.5vw, 15px);
+    border: 1px solid rgba(147, 51, 234, 0.2);
+    width: 100%;
+    max-width: min(800px, 95vw);
+    margin: 0 auto;
+    flex-wrap: wrap;
+    height: clamp(80px, 10vh, 100px);
+}
+
+.control-btn {
+    padding: clamp(0.6rem, 0.8vw, 0.8rem) clamp(1.2rem, 1.5vw, 1.5rem);
+    font-size: clamp(0.8rem, 1vw, 1rem);
+    background: rgba(147, 51, 234, 0.2);
+    border: 2px solid rgba(147, 51, 234, 0.4);
+    border-radius: clamp(8px, 1vw, 10px);
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: clamp(80px, 10vw, 100px);
+    flex: 1;
+    max-width: 180px;
+    height: clamp(40px, 5vh, 50px);
+}
+
+.control-btn:hover {
+    background: rgba(147, 51, 234, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(147, 51, 234, 0.2);
+}
+
+.control-btn.leave-game {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.4);
+}
+
+.control-btn.leave-game:hover {
+    background: rgba(239, 68, 68, 0.3);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.2);
+}
+
+/* Chat Box */
+.chat-container {
+    position: fixed;
+    right: clamp(0.8rem, 1.5vw, 1.5rem);
+    bottom: clamp(0.8rem, 1.5vw, 1.5rem);
+    width: clamp(250px, 30vw, 300px);
+    height: clamp(300px, 35vh, 350px);
+    background: rgba(147, 51, 234, 0.1);
+    border: 2px solid rgba(147, 51, 234, 0.3);
+    border-radius: clamp(15px, 2vw, 20px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: clamp(0.8rem, 1.2vw, 1.2rem);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.5rem, 0.8vw, 0.8rem);
+}
+
+.message {
+    padding: clamp(0.5rem, 0.8vw, 0.8rem) clamp(0.8rem, 1vw, 1rem);
+    border-radius: clamp(8px, 1vw, 10px);
+    background: rgba(255, 255, 255, 0.1);
+    max-width: 85%;
+    font-size: clamp(0.8rem, 0.9vw, 0.9rem);
+    line-height: 1.4;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message.system {
+    background: rgba(147, 51, 234, 0.2);
+    align-self: center;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0.6rem 1.2rem;
+}
+
+.chat-input {
+    display: flex;
+    gap: clamp(0.5rem, 0.8vw, 0.8rem);
+    padding: clamp(0.8rem, 1vw, 1rem);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.chat-input input {
+    flex: 1;
+    padding: clamp(0.5rem, 0.8vw, 0.8rem) clamp(0.8rem, 1vw, 1rem);
+    border: 2px solid rgba(147, 51, 234, 0.3);
+    border-radius: clamp(8px, 1vw, 10px);
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: clamp(0.8rem, 0.9vw, 0.9rem);
+    transition: all 0.3s ease;
+}
+
+.chat-input input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #9333ea;
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.2);
+}
+
+.send-btn {
+    padding: clamp(0.5rem, 0.8vw, 0.8rem) clamp(1rem, 1.2vw, 1.2rem);
+    border: none;
+    border-radius: clamp(8px, 1vw, 10px);
+    background: rgba(147, 51, 234, 0.3);
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    min-width: 70px;
+}
+
+.send-btn:hover {
+    background: rgba(147, 51, 234, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(147, 51, 234, 0.2);
+}
+
+/* Responsive Design for Game Room */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 0.5rem;
+        gap: 0.5rem;
+    }
+
+    .player-seats {
+        height: clamp(80px, 10vh, 100px);
+    }
+
+    .game-area {
+        height: clamp(250px, 35vh, 300px);
+    }
+
+    .player-hand {
+        height: clamp(150px, 20vh, 180px);
+    }
+
+    .game-controls {
+        height: clamp(70px, 8vh, 80px);
+    }
+
+    .chat-container {
+        width: 100%;
+        height: clamp(200px, 25vh, 220px);
+        right: 0;
+        bottom: 0;
+        border-radius: 20px 20px 0 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .player-seats {
+        height: clamp(70px, 8vh, 80px);
+    }
+
+    .game-area {
+        height: clamp(200px, 30vh, 250px);
+    }
+
+    .player-hand {
+        height: clamp(130px, 18vh, 150px);
+    }
+
+    .game-controls {
+        height: clamp(60px, 7vh, 70px);
+    }
+
+    .chat-container {
+        height: clamp(180px, 22vh, 200px);
+    }
+}
